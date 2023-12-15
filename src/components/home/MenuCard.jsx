@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Popup from 'reactjs-popup';
+import Popup from "reactjs-popup";
+import { useCartContext } from "../../context/CartContext";
 
 const MenuCard = ({ itemNum, burgerSrc, price, title, handler, delay = 0 }) => {
+  const [cartItems, setCartItems] = useCartContext();
+
   return (
     <motion.div
       className="menuCard"
@@ -18,23 +21,36 @@ const MenuCard = ({ itemNum, burgerSrc, price, title, handler, delay = 0 }) => {
         delay,
       }}
     >
-      <div></div>
-      <main>
+      <div className="placeholder"></div>
+      <div className="card">
         <img src={burgerSrc} alt={itemNum} />
 
-        <h5>₹{price}</h5>
+        <h5>
+          {Intl.NumberFormat("es-ES", {
+            style: "currency",
+            currency: "EUR",
+          }).format(price)}
+        </h5>
 
         <p>{title}</p>
-        <Popup trigger=
-                {<button onClick={() => handler(itemNum)}>Buy Now</button>}
-               >
-                <div style={{color:"red", transform: 'translate(0%,-500%)', backgroundColor: '#fff', padding: '10px', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>Added to cart!</div>
-               
-            </Popup>
-            
-
-        
-      </main>
+        <Popup
+          trigger={(open) => <button>Buy Now</button>}
+          onOpen={() => handler(itemNum, cartItems, setCartItems)}
+        >
+          <div
+            style={{
+              color: "red",
+              transform: "translate(0%,-500%)",
+              backgroundColor: "#fff",
+              padding: "10px",
+              borderRadius: "5px",
+              boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            Added to cart!
+          </div>
+        </Popup>
+      </div>
     </motion.div>
   );
 };

@@ -1,0 +1,36 @@
+.login {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+
+  > main {
+    width: 70%;
+    padding: 1rem 2rem 1rem 2rem;
+  }
+}
+
+.pills {
+  margin-bottom: 3rem !important;
+  width: 100%;
+}
+
+.pill {
+  width: 50%;
+}
+
+.button-link {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: inherit;
+  &:hover {
+    color: #0056b3;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+}

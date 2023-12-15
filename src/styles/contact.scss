@@ -71,6 +71,15 @@
   }
 }
 
+.popup {
+  color: $red;
+  transform: translate(0%, -500%);
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (max-width: 600px) {
   .contact {
     height: 70vh;
